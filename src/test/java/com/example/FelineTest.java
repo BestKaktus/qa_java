@@ -2,7 +2,6 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -11,9 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class FelineTest {
-
-    @Mock
-    Feline felineMock;
 
     @Test
     public void getFamilyTest() {
@@ -26,8 +22,8 @@ public class FelineTest {
 
     @Test
     public void getKittensTestWithParam() {
-        Mockito.when(felineMock.getKittens(6)).thenReturn(6);
-        assertEquals(6, felineMock.getKittens(6));
+        Feline feline = new Feline();
+        assertEquals(6, feline.getKittens(6));
     }
 
     @Test
@@ -38,8 +34,8 @@ public class FelineTest {
 
     @Test
     public void eatMeatTestWithException() throws Exception {
-        Mockito.when(felineMock.getFood("Something")).thenThrow(Exception.class);
-        assertThrows(Exception.class, () -> felineMock.getFood("Something"));
+        Feline feline = new Feline();
+        assertThrows(Exception.class, () -> feline.getFood("Something"));
     }
 
     @Test
